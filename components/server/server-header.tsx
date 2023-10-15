@@ -5,6 +5,7 @@ import { ChevronDown, LogOut, PlusCircle, Settings, Trash, UserPlus, Users } fro
 
 import { ServerWithMembersWithProfiles } from "@/types"
 import { MemberRole } from "@prisma/client"
+import { useModal } from "@/hooks/use-modal-store"
 
 
 interface ServerHeaderProps {
@@ -15,6 +16,7 @@ interface ServerHeaderProps {
 export const ServerHeader = ({
 	server, role
 }: ServerHeaderProps) => {
+	const { onOpen } = useModal()
 	const isAdmin = role === MemberRole.ADMIN;
 	const isModerator = isAdmin || role === MemberRole.MODERATOR;
 
@@ -38,6 +40,7 @@ export const ServerHeader = ({
 				>
 					{isModerator && (
 						<DropdownMenuItem
+							onClick={() => onOpen("invite", { server })}
 							className="px-3 py-2 text-sm text-indigo-600 cursor-pointer dark:text-indigo-400"
 						>
 							Invite People
@@ -46,6 +49,7 @@ export const ServerHeader = ({
 					)}
 					{isAdmin && (
 						<DropdownMenuItem
+							onClick={() => onOpen("editServer", { server })}
 							className="px-3 py-2 text-sm cursor-pointer"
 						>
 							Server Setting
