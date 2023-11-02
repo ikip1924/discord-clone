@@ -21,9 +21,7 @@ const SetupPage = async () => {
 	}
 
 	return (
-		<div>
-			<InitialModal />
-		</div>
+		<InitialModal />
 	);
 }
 

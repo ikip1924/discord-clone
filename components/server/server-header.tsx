@@ -59,6 +59,7 @@ export const ServerHeader = ({
 					{isAdmin && (
 						<DropdownMenuItem
 							className="px-3 py-2 text-sm cursor-pointer"
+							onClick={() => onOpen("members", { server })}
 						>
 							Manage Member
 							<Users className="w-4 h-4 ml-auto" />
@@ -66,6 +67,7 @@ export const ServerHeader = ({
 					)}
 					{isModerator && (
 						<DropdownMenuItem
+							onClick={() => onOpen("createChannel")}
 							className="px-3 py-2 text-sm cursor-pointer"
 						>
 							Create Channel
